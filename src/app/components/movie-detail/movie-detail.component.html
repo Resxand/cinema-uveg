@@ -1,0 +1,16 @@
+@if (movie) {
+  <section class="detail">
+    <button (click)="close()">← Volver</button>
+    <h2>{{ movie.title }}</h2>
+    <em>{{ movie.tagline }}</em>
+    @if (movie.poster_path) {
+      <img [src]="imageUrl + movie.poster_path" [alt]="movie.title" />
+    }
+    <p>{{ movie.overview }}</p>
+    <p><strong>Duración:</strong> {{ movie.runtime }} min</p>
+    <p><strong>Calificación:</strong> {{ movie.vote_average | number:'1.1-1' }} ({{ movie.vote_count }} votos)</p>
+    <p><strong>Géneros:</strong>
+      @for (g of movie.genres; track g.id) { <span class="tag">{{ g.name }}</span> }
+    </p>
+  </section>
+}

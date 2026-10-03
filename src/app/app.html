@@ -1,0 +1,9 @@
+<header><h1>🎬 {{ title }}</h1></header>
+
+<main>
+  @if (selectedMovieId === null) {
+    <app-movie-list (movieSelected)="onMovieSelected($event)" />
+  } @else {
+    <app-movie-detail [movieId]="selectedMovieId" (closed)="onDetailClosed()" />
+  }
+</main>
